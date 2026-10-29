@@ -4,12 +4,12 @@ import { site } from "@/lib/site";
 import "./globals.css";
 
 // Self-hosted so the site never depends on Google Fonts at build or run time.
-const inter = localFont({ src: "../fonts/inter-latin-wght-normal.woff2", variable: "--font-inter", weight: "100 900", display: "swap" });
-const interTight = localFont({
-  src: "../fonts/inter-tight-latin-wght-normal.woff2",
-  variable: "--font-inter-tight",
+const archivo = localFont({
+  src: "../fonts/archivo-latin-standard-normal.woff2",
+  variable: "--font-archivo",
   weight: "100 900",
   display: "swap",
+  declarations: [{ prop: "font-stretch", value: "62% 125%" }],
 });
 const kalam = localFont({
   src: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f3f3ee",
+  themeColor: "#e3e3de",
 };
 
 const jsonLd = {
@@ -62,7 +62,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${interTight.variable} ${kalam.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${kalam.variable}`}>
       <body className="min-h-dvh">
         <script
           type="application/ld+json"

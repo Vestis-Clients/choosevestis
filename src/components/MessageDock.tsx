@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Arrow } from "./FitCallForm";
 
 type Channel = { id: string; label: string; detail: string; href: string };
 
@@ -36,11 +35,11 @@ export default function MessageDock({ channels }: { channels: Channel[] }) {
       {open && (
         <div
           id="message-panel"
-          className="w-[min(20rem,calc(100vw-2rem))] origin-bottom-right overflow-hidden rounded-[4px] border border-ink bg-paper shadow-[0_24px_48px_-20px_rgba(23,39,29,0.55)]"
+          className="w-[min(20rem,calc(100vw-2rem))] origin-bottom-right overflow-hidden border-2 border-graphite bg-white shadow-[6px_6px_0_var(--color-graphite)]"
         >
-          <div className="bg-forest px-5 py-4 text-paper">
-            <p className="font-display text-lg font-bold">Message Alex directly</p>
-            <p className="mt-0.5 text-sm text-[#c9d3cc]">These go straight to my phone.</p>
+          <div className="bg-asphalt px-5 py-4 text-white">
+            <p className="condensed text-[1.4rem] font-extrabold uppercase leading-none">Reach Alex directly</p>
+            <p className="mt-1.5 text-sm text-[#c3c9cd]">These go straight to my phone.</p>
           </div>
           <ul className="divide-y divide-rule">
             {channels.map((c) => (
@@ -49,16 +48,16 @@ export default function MessageDock({ channels }: { channels: Channel[] }) {
                   href={c.href}
                   target={c.href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3.5 px-5 py-3.5 hover:bg-white"
+                  className="flex items-center gap-3.5 px-5 py-3.5 hover:bg-[#fbffe0]"
                 >
                   <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" aria-hidden>
                     {ICONS[c.id]}
                   </svg>
                   <span className="min-w-0 flex-1">
                     <span className="block font-semibold">{c.label}</span>
-                    <span className="block truncate text-sm text-muted">{c.detail}</span>
+                    <span className="block truncate text-sm text-steel">{c.detail}</span>
                   </span>
-                  <Arrow className="h-3.5 w-3.5 text-muted" />
+                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 text-steel" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden><path d="M7 17 17 7M8 7h9v9" /></svg>
                 </a>
               </li>
             ))}
@@ -70,10 +69,10 @@ export default function MessageDock({ channels }: { channels: Channel[] }) {
         aria-expanded={open}
         aria-controls="message-panel"
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex items-center gap-3 rounded-full border border-ink bg-lime py-2 pl-5 pr-2 font-semibold text-ink shadow-[0_12px_24px_-12px_rgba(23,39,29,0.6)] hover:bg-[#cde56c]"
+        className="inline-flex items-center gap-3 border-2 border-graphite bg-hivis py-2 pl-4 pr-2 font-bold text-graphite shadow-[4px_4px_0_var(--color-graphite)]"
       >
-        {open ? "Close" : "Message me"}
-        <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-lime" aria-hidden>
+        {open ? "Close" : "Text Alex"}
+        <span className="grid h-9 w-9 place-items-center bg-graphite text-hivis" aria-hidden>
           {open ? (
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.4">
               <path d="M6 6l12 12M18 6 6 18" />

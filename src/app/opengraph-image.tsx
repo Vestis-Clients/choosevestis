@@ -14,30 +14,30 @@ export default function OgImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#f3f3ee",
-          color: "#17271d",
+          background: "#e3e3de",
+          color: "#1c1f22",
           padding: "72px 80px",
           fontFamily: "sans-serif",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-          <div style={{ width: 72, height: 72, background: "#d5ec7c", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ width: 72, height: 72, background: "#d9f21c", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="40" height="40" viewBox="0 0 32 32">
-              <path d="M7 25 24 8M9 7h16v16" fill="none" stroke="#17271d" strokeWidth="3.4" />
+              <path d="M7 25 24 8M9 7h16v16" fill="none" stroke="#1c1f22" strokeWidth="3.4" />
             </svg>
           </div>
           <div style={{ fontSize: 26, letterSpacing: 5, fontWeight: 700, display: "flex", flexDirection: "column" }}>
-            <span>FRACTIONAL</span>
-            <span>GROWTH PARTNER</span>
+            <span>VESTIS</span>
+            <span style={{ fontSize: 18, letterSpacing: 2, color: "#5a6168" }}>SOLUTIONS LLC</span>
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", fontSize: 92, fontWeight: 800, letterSpacing: -4, lineHeight: 1 }}>
-          <span>Win better work.</span>
-          <span>Run a better business.</span>
+          <span>WIN BETTER WORK.</span>
+          <span>RUN A BETTER BUSINESS.</span>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 26, color: "#5b665e" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 26, color: "#5a6168" }}>
           <span>A hands-on partner for trade business owners</span>
-          <span style={{ color: "#17271d", fontWeight: 700 }}>choosevestis.com</span>
+          <span style={{ color: "#1c1f22", fontWeight: 700 }}>choosevestis.com</span>
         </div>
       </div>
     ),

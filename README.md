@@ -3,9 +3,9 @@
 The Vestis Solutions LLC website. It's built with Next.js and deploys to Vercel.
 
 ## What's on the site
-- **Landing page**: matches the flyer. The legal pad in the hero shows today's date and time, a to-do list that changes by day of week, and a countdown to year end.
+- **Landing page**: built around contractor paperwork. The hero is a live work order with today's date, time, and a "problem reported" line that writes itself; pricing is laid out as an estimate; the contact form is a work order the visitor fills out.
 - **Fit call form** (`#contact`): sends each request to your inbox through Resend. The reply-to is set to the client's email, so you can just hit Reply.
-- **"Message me" button**: WhatsApp, Text, Messenger, Call, and Email. Each channel shows up only after you fill in its setting.
+- **"Text Alex" button**: WhatsApp, Text, Messenger, Call, and Email. Each channel shows up only after you fill in its setting.
 - `/contact` redirects to the form, so it's safe to print on business cards.
 
 ---
@@ -51,7 +51,7 @@ The Vestis Solutions LLC website. It's built with Next.js and deploys to Vercel.
 
 ### 5. Test
 - Submit the form on the live site. It should arrive at `contact@` within a few seconds.
-- Tap each "Message me" option on your phone.
+- Tap each "Text Alex" option on your phone.
 
 ## Running it locally
 ```bash
@@ -62,7 +62,7 @@ npm run dev                  # http://localhost:3000
 
 ## Where to edit things
 - Page copy and pricing: `src/app/page.tsx`
-- Legal pad to-do lists (one list per weekday): `src/components/LegalPad.tsx`
+- Hero work order and the rotating problems: `src/components/WorkOrder.tsx`
 - Form questions and bottleneck options: `src/components/FitCallForm.tsx`
 - Contact channels: `src/lib/site.ts`
 - Colors: `src/app/globals.css`, at the top
