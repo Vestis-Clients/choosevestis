@@ -64,3 +64,9 @@ body {
     opacity: 0;
   }
 }
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

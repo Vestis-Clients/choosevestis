@@ -3,7 +3,7 @@
 The Vestis Solutions LLC website. It's built with Next.js and deploys to Vercel.
 
 ## What's on the site
-- **Landing page**: clean white and light grey, navy accent, IBM Plex Sans. The hero card shows a live fit call request with today's date and time and a bottleneck line that types itself.
+- **Landing page**: clean white and light grey with a navy accent. The hero is a live lead board where a job moves from missed call to booked on its own, with floating notifications that react to the mouse. Scrolling drives a day 0–90 counter and checklist, the "levers" illustrations animate in, and the price counts up.
 - **Fit call form** (`#contact`): sends each request to your inbox through Resend. The reply-to is set to the client's email, so you can just hit Reply.
 - **"Text Alex" button**: WhatsApp, Text, Messenger, Call, and Email. Each channel shows up only after you fill in its setting.
 - `/contact` redirects to the form, so it's safe to print on business cards.
@@ -62,7 +62,8 @@ npm run dev                  # http://localhost:3000
 
 ## Where to edit things
 - Page copy and pricing: `src/app/page.tsx`
-- Hero card and its rotating bottlenecks: `src/components/IntakeCard.tsx`
+- Hero lead board (leads, stages, notifications): `src/components/LivePipeline.tsx`
+- 90-day scroll section and milestone days: `src/components/NinetyDays.tsx`
 - Form questions and bottleneck options: `src/components/FitCallForm.tsx`
 - Contact channels: `src/lib/site.ts`
 - Colors: `src/app/globals.css`, at the top
