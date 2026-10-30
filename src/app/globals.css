@@ -1,21 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-concrete: #e3e3de;
-  --color-sheet: #ffffff;
-  --color-graphite: #1c1f22;
-  --color-steel: #5a6168;
-  --color-rule: #c8cac4;
-  --color-hivis: #d9f21c;
-  --color-hivis-deep: #b8d10a;
-  --color-reflect: #b9bec3;
-  --color-stamp: #c23b22;
-  --color-carbon: #fff3b0;
-  --color-asphalt: #25292c;
-  --color-pen: #1f3a8a;
+  --color-white: #ffffff;
+  --color-mist: #f4f5f7; /* light grey sections */
+  --color-line: #e2e5e9; /* borders and dividers */
+  --color-ink: #15191e; /* headings and body */
+  --color-slate: #5a6472; /* secondary text */
+  --color-navy: #1d3a5c; /* the one accent: workwear navy */
+  --color-navy-dark: #152b45;
+  --color-navy-tint: #eaf0f6;
+  --color-error: #b42318;
 
-  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  --font-hand: var(--font-kalam), "Comic Sans MS", cursive;
+  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -23,12 +19,11 @@ html {
 }
 
 body {
-  background-color: var(--color-concrete);
-  /* faint concrete speckle */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.11 0 0 0 0 0.12 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  color: var(--color-graphite);
+  background: var(--color-white);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss02";
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -45,111 +40,24 @@ body {
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-graphite);
+  outline: 2px solid var(--color-navy);
   outline-offset: 3px;
 }
 
 ::selection {
-  background: var(--color-hivis);
-  color: var(--color-graphite);
+  background: var(--color-navy-tint);
 }
 
-/* Condensed display type */
-.display {
-  font-stretch: 64%;
-  font-variation-settings: "wdth" 64;
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  line-height: 0.92;
-}
-.condensed {
-  font-stretch: 82%;
-  font-variation-settings: "wdth" 82;
-}
-
-/* Reflective safety tape: hi-vis with a silver stripe */
-.reflective {
-  background: linear-gradient(
-    to bottom,
-    var(--color-hivis) 0 34%,
-    var(--color-reflect) 34% 44%,
-    #e6e9eb 44% 56%,
-    var(--color-reflect) 56% 66%,
-    var(--color-hivis) 66% 100%
-  );
-}
-
-/* Paper sheet with a perforated top edge */
-.sheet {
-  background: var(--color-sheet);
-  box-shadow:
-    0 1px 0 rgba(28, 31, 34, 0.06),
-    0 18px 36px -22px rgba(28, 31, 34, 0.45);
-}
-.perforated {
-  -webkit-mask:
-    radial-gradient(circle 4px at 8px 0, transparent 98%, #000) top left / 16px 100% repeat-x;
-  mask:
-    radial-gradient(circle 4px at 8px 0, transparent 98%, #000) top left / 16px 100% repeat-x;
-}
-
-/* Form cell, like a printed work order box */
-.cell-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--color-steel);
-}
-
-/* Rubber stamp */
-.stamp {
-  color: var(--color-stamp);
-  border: 3px solid currentColor;
-  border-radius: 6px;
-  font-stretch: 75%;
-  font-variation-settings: "wdth" 75;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  mix-blend-mode: multiply;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 1.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 1.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-}
-.stamp-in {
-  animation: stamp 0.45s cubic-bezier(0.2, 1.6, 0.4, 1) both;
-}
-@keyframes stamp {
-  from {
-    opacity: 0;
-    transform: var(--stamp-rot) scale(1.6);
-  }
-  to {
-    opacity: 0.92;
-    transform: var(--stamp-rot) scale(1);
-  }
-}
-
-/* Tape measure blade */
-.tape {
-  background-color: var(--color-hivis);
-  background-image:
-    repeating-linear-gradient(to right, var(--color-graphite) 0 2px, transparent 2px 100%),
-    repeating-linear-gradient(to right, var(--color-graphite) 0 1px, transparent 1px 100%);
-  background-size: calc(100% / 9) 46%, calc(100% / 36) 24%;
-  background-position: 0 0, 0 0;
-  background-repeat: repeat-x;
-}
-
-/* Handwriting cursor while the problem line writes itself */
-.writing::after {
+/* Blinking caret while the request line types itself */
+.typing::after {
   content: "";
   display: inline-block;
-  width: 2px;
-  height: 1.05em;
+  width: 1.5px;
+  height: 1.1em;
   margin-left: 2px;
-  vertical-align: -0.15em;
-  background: var(--color-pen);
-  animation: blink 0.9s steps(1) infinite;
+  vertical-align: -0.18em;
+  background: var(--color-navy);
+  animation: blink 1s steps(1) infinite;
 }
 @keyframes blink {
   50% {

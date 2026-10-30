@@ -3,7 +3,7 @@
 The Vestis Solutions LLC website. It's built with Next.js and deploys to Vercel.
 
 ## What's on the site
-- **Landing page**: built around contractor paperwork. The hero is a live work order with today's date, time, and a "problem reported" line that writes itself; pricing is laid out as an estimate; the contact form is a work order the visitor fills out.
+- **Landing page**: clean white and light grey, navy accent, IBM Plex Sans. The hero card shows a live fit call request with today's date and time and a bottleneck line that types itself.
 - **Fit call form** (`#contact`): sends each request to your inbox through Resend. The reply-to is set to the client's email, so you can just hit Reply.
 - **"Text Alex" button**: WhatsApp, Text, Messenger, Call, and Email. Each channel shows up only after you fill in its setting.
 - `/contact` redirects to the form, so it's safe to print on business cards.
@@ -62,7 +62,7 @@ npm run dev                  # http://localhost:3000
 
 ## Where to edit things
 - Page copy and pricing: `src/app/page.tsx`
-- Hero work order and the rotating problems: `src/components/WorkOrder.tsx`
+- Hero card and its rotating bottlenecks: `src/components/IntakeCard.tsx`
 - Form questions and bottleneck options: `src/components/FitCallForm.tsx`
 - Contact channels: `src/lib/site.ts`
 - Colors: `src/app/globals.css`, at the top

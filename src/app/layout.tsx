@@ -4,19 +4,10 @@ import { site } from "@/lib/site";
 import "./globals.css";
 
 // Self-hosted so the site never depends on Google Fonts at build or run time.
-const archivo = localFont({
-  src: "../fonts/archivo-latin-standard-normal.woff2",
-  variable: "--font-archivo",
-  weight: "100 900",
-  display: "swap",
-  declarations: [{ prop: "font-stretch", value: "62% 125%" }],
-});
-const kalam = localFont({
-  src: [
-    { path: "../fonts/kalam-latin-400-normal.woff2", weight: "400" },
-    { path: "../fonts/kalam-latin-700-normal.woff2", weight: "700" },
-  ],
-  variable: "--font-kalam",
+const plex = localFont({
+  src: "../fonts/ibm-plex-sans-latin-wght-normal.woff2",
+  variable: "--font-plex",
+  weight: "100 700",
   display: "swap",
 });
 
@@ -41,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#e3e3de",
+  themeColor: "#ffffff",
 };
 
 const jsonLd = {
@@ -62,7 +53,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${archivo.variable} ${kalam.variable}`}>
+    <html lang="en" className={plex.variable}>
       <body className="min-h-dvh">
         <script
           type="application/ld+json"
