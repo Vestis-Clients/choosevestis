@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useEmail } from "./EmailLink";
 
 type Channel = { id: string; label: string; detail: string; href: string };
 
@@ -12,7 +13,8 @@ const ICONS: Record<string, React.ReactNode> = {
   email: <path d="M3 6h18v12H3z M3 7l9 6 9-6" />,
 };
 
-export default function MessageDock({ channels }: { channels: Channel[] }) {
+export default function MessageDock({ channels, emailUser }: { channels: Channel[]; emailUser: string }) {
+  const email = useEmail(emailUser);
   const [open, setOpen] = useState(false);
   const panel = useRef<HTMLDivElement>(null);
 
@@ -39,15 +41,15 @@ export default function MessageDock({ channels }: { channels: Channel[] }) {
         >
           <div className="border-b border-line px-5 py-4">
             <p className="text-[1.05rem] font-semibold">Reach Alex directly</p>
-            <p className="mt-0.5 text-sm text-slate">These go straight to my phone.</p>
+            <p className="mt-0.5 text-sm text-slate">I reply the same business day.</p>
           </div>
           <ul className="divide-y divide-line">
             {channels.map((c) => (
               <li key={c.id}>
                 <a
-                  href={c.href}
-                  target={c.href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
+                  href={c.id === "email" ? (email ? `mailto:${email}` : "#contact") : c.href}
+                  target={c.href.startsWith("/go/") ? "_blank" : undefined}
+                  rel="noopener noreferrer nofollow"
                   className="flex items-center gap-3.5 px-5 py-3.5 hover:bg-mist"
                 >
                   <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-navy" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" aria-hidden>
@@ -55,7 +57,7 @@ export default function MessageDock({ channels }: { channels: Channel[] }) {
                   </svg>
                   <span className="min-w-0 flex-1">
                     <span className="block font-semibold">{c.label}</span>
-                    <span className="block truncate text-sm text-slate">{c.detail}</span>
+                    <span className="block truncate text-sm text-slate">{c.id === "email" && email ? email : c.detail}</span>
                   </span>
                   <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 text-slate" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden><path d="M7 17 17 7M8 7h9v9" /></svg>
                 </a>
@@ -82,7 +84,7 @@ export default function MessageDock({ channels }: { channels: Channel[] }) {
             </svg>
           )}
         </span>
-        {open ? "Close" : "Text Alex"}
+        {open ? "Close" : "Message Alex"}
       </button>
     </div>
   );

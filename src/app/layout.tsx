@@ -40,7 +40,6 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: site.legalName,
   url: site.url,
-  email: site.email,
   description,
   areaServed: "US",
   address: {

@@ -5,7 +5,8 @@ import NinetyDays from "@/components/NinetyDays";
 import FitCallForm from "@/components/FitCallForm";
 import MessageDock from "@/components/MessageDock";
 import { CountUp, HeroTitle, Reveal, StickyHeader } from "@/components/Bits";
-import { channels, formatPhone, site } from "@/lib/site";
+import EmailLink from "@/components/EmailLink";
+import { channels, site } from "@/lib/site";
 
 function Mark({ className = "h-8 w-8" }: { className?: string }) {
   return (
@@ -214,26 +215,14 @@ export default function Home() {
               </p>
               <div className="mt-10 grid max-w-[28rem] gap-5 border-t border-line pt-8 text-[0.98rem]">
                 <div>
-                  <p className="font-medium">Rather talk now?</p>
+                  <p className="font-medium">Rather message now?</p>
                   <p className="mt-1 text-slate">
-                    {site.phone ? (
-                      <>
-                        Call or text{" "}
-                        <a href={`tel:${site.phone}`} className="font-medium text-navy underline underline-offset-4">
-                          {formatPhone(site.phone)}
-                        </a>
-                        , or tap &ldquo;Text Alex&rdquo; in the corner.
-                      </>
-                    ) : (
-                      <>Tap &ldquo;Text Alex&rdquo; in the corner to reach me on my phone.</>
-                    )}
+                    Tap &ldquo;Message Alex&rdquo; in the corner to reach me on WhatsApp, Messenger, or email.
                   </p>
                 </div>
                 <div>
                   <p className="font-medium">Email</p>
-                  <a href={`mailto:${site.email}`} className="mt-1 inline-block text-navy underline underline-offset-4">
-                    {site.email}
-                  </a>
+                  <EmailLink user={site.emailUser} className="mt-1 inline-block text-navy underline underline-offset-4" />
                 </div>
               </div>
             </Reveal>
@@ -250,13 +239,11 @@ export default function Home() {
               {site.legalName}, {site.city}
             </span>
           </div>
-          <a href={`mailto:${site.email}`} className="hover:text-ink">
-            {site.email}
-          </a>
+          <EmailLink user={site.emailUser} className="hover:text-ink" />
         </div>
       </footer>
 
-      <MessageDock channels={channels()} />
+      <MessageDock channels={channels()} emailUser={site.emailUser} />
     </div>
   );
 }

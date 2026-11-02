@@ -95,7 +95,7 @@ export default function FitCallForm() {
     } catch (err) {
       setStatus({
         kind: "error",
-        message: `${err instanceof Error ? err.message : "Your request didn't go through."} Try again, or tap Text Alex in the corner.`,
+        message: `${err instanceof Error ? err.message : "Your request didn't go through."} Try again, or tap Message Alex in the corner.`,
       });
     }
   }
