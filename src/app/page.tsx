@@ -217,7 +217,7 @@ export default function Home() {
                 <div>
                   <p className="font-medium">Rather message now?</p>
                   <p className="mt-1 text-slate">
-                    Tap &ldquo;Message Alex&rdquo; in the corner to reach me on WhatsApp, Messenger, or email.
+                    Tap &ldquo;Message Alex&rdquo; in the corner to reach me on Messenger or email.
                   </p>
                 </div>
                 <div>
