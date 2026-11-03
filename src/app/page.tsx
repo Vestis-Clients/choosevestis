@@ -6,7 +6,7 @@ import FitCallForm from "@/components/FitCallForm";
 import MessageDock from "@/components/MessageDock";
 import { CountUp, HeroTitle, Reveal, StickyHeader } from "@/components/Bits";
 import EmailLink from "@/components/EmailLink";
-import { channels, site } from "@/lib/site";
+import { bookingUrl, channels, site } from "@/lib/site";
 
 function Mark({ className = "h-8 w-8" }: { className?: string }) {
   return (
@@ -209,6 +209,18 @@ export default function Home() {
                 of it, you&apos;ll know whether working together makes sense.
               </p>
               <div className="mt-10 grid max-w-[28rem] gap-5 border-t border-line pt-8 text-[0.98rem]">
+                <div>
+                  <p className="font-medium">Rather pick a time yourself?</p>
+                  <p className="mt-1 text-slate">See my calendar and book a free 30-minute fit call.</p>
+                  <a
+                    href={bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-block rounded-full bg-navy px-5 py-2.5 font-medium text-white hover:bg-navy-dark"
+                  >
+                    Book a time
+                  </a>
+                </div>
                 <div>
                   <p className="font-medium">Rather message now?</p>
                   <p className="mt-1 text-slate">

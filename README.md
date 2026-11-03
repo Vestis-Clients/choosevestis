@@ -6,6 +6,7 @@ The Vestis Solutions LLC website. It's built with Next.js and deploys to Vercel.
 - **Landing page**: live lead board hero, scroll-driven 90-day section, animated levers, pricing.
 - **Fit call form** (`#contact`): sends each request to contact@choosevestis.com through Resend. Reply-to is the visitor's email.
 - **"Message Alex" button**: Messenger and Email (WhatsApp appears if `WHATSAPP_URL` is set). Links go through `/go/<channel>` so no number or link is in the page source.
+- **Book a time**: links to Cal.com (`cal.com/choosevestis/fit-call`), set in `src/lib/booking.ts`. Bookings go to the Google Calendar with a Google Meet link.
 - `/contact` redirects to the form.
 
 ## How it's set up

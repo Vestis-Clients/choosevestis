@@ -1,3 +1,5 @@
+import { bookingUrl } from "./booking";
+
 // Public site settings.
 //
 // Privacy: no phone number or raw email address is ever written into the page HTML,
@@ -40,9 +42,11 @@ export type Channel = { id: string; label: string; detail: string; href: string 
 
 // What the "Message Alex" panel shows. Hrefs point at our own redirect, not the real target.
 export function channels(): Channel[] {
-  const list: Channel[] = [];
+  const list: Channel[] = [{ id: "book", label: "Book a time", detail: "Pick a slot for a free fit call", href: bookingUrl }];
   if (channelTarget("whatsapp")) list.push({ id: "whatsapp", label: "WhatsApp", detail: "Opens a chat with me", href: "/go/whatsapp" });
   if (channelTarget("messenger")) list.push({ id: "messenger", label: "Messenger", detail: "Message the Vestis Facebook page", href: "/go/messenger" });
   list.push({ id: "email", label: "Email", detail: "Opens your email app", href: "email" });
   return list;
 }
+
+export { bookingUrl };

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { bookingUrl } from "@/lib/booking";
 
 const PROBLEMS = [
   "Missed calls and slow lead follow-up",
@@ -134,6 +135,15 @@ export default function FitCallForm({ messenger = false }: { messenger?: boolean
             Open Messenger
           </a>
         )}
+        <p className="mt-6 border-t border-line pt-5 text-[0.95rem] text-slate">Rather lock in a time now?</p>
+        <a
+          href={bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-block rounded-md border border-line px-5 py-2.5 font-medium hover:border-slate"
+        >
+          Pick a time for your fit call
+        </a>
       </div>
     );
   }

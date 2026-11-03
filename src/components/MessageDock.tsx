@@ -11,6 +11,7 @@ const ICONS: Record<string, React.ReactNode> = {
   messenger: <path d="M12 3c-5 0-9 3.7-9 8.3 0 2.6 1.3 4.9 3.3 6.4V21l3-1.7c.9.3 1.8.4 2.7.4 5 0 9-3.7 9-8.4S17 3 12 3z M7 13.5l3.5-3.5 2.5 2 3.5-2.5-3.5 3.5-2.5-2z" />,
   call: <path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v3a3 3 0 0 1-3 3A15 15 0 0 1 3 6a3 3 0 0 1 3-3z" />,
   email: <path d="M3 6h18v12H3z M3 7l9 6 9-6" />,
+  book: <path d="M4 6h16v14H4z M4 10h16 M8 3v5 M16 3v5 M8 14h3" />,
 };
 
 export default function MessageDock({ channels, emailUser }: { channels: Channel[]; emailUser: string }) {
@@ -48,7 +49,7 @@ export default function MessageDock({ channels, emailUser }: { channels: Channel
               <li key={c.id}>
                 <a
                   href={c.id === "email" ? (email ? `mailto:${email}` : "#contact") : c.href}
-                  target={c.href.startsWith("/go/") ? "_blank" : undefined}
+                  target={c.href.startsWith("/go/") || c.href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer nofollow"
                   className="flex items-center gap-3.5 px-5 py-3.5 hover:bg-mist"
                 >
