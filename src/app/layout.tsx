@@ -11,9 +11,9 @@ const plex = localFont({
   display: "swap",
 });
 
-const title = "Vestis Solutions | Fractional growth partner for trade businesses";
+const title = "Vestis Solutions | Fractional Growth Partner for owner-led businesses";
 const description =
-  "Hands-on help for trade business owners to win the right jobs, simplify how work gets done, and take pressure off the owner, without another full-time hire. Based in Charlotte, NC.";
+  "Hands-on help for owner-led businesses to win the right work, fix the systems behind it, and get found on Google and AI search, without another full-time hire. Based in Charlotte, NC.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

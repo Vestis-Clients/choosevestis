@@ -36,7 +36,7 @@ export default function OgImage() {
           <span>Run a better business.</span>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 26, color: "#5a6472" }}>
-          <span>A hands-on partner for trade business owners</span>
+          <span>A Fractional Growth Partner for business owners</span>
           <span style={{ color: "#15191e", fontWeight: 700 }}>choosevestis.com</span>
         </div>
       </div>

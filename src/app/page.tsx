@@ -78,7 +78,7 @@ export default function Home() {
             <Reveal>
               <p className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-[0.85rem] text-slate shadow-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-navy" />
-                Fractional growth partner for trade business owners
+                Fractional Growth Partner for owner-led businesses
               </p>
             </Reveal>
             <HeroTitle
@@ -109,7 +109,7 @@ export default function Home() {
         </section>
 
         {/* Trades */}
-        <section aria-label="Trades I work with" className="border-y border-line bg-white py-5">
+        <section aria-label="Industries I work with" className="border-y border-line bg-white py-5">
           <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]">
             <ul className="flex w-max animate-[marquee_40s_linear_infinite] gap-12 motion-reduce:animate-none">
               {[...TRADES, ...TRADES].map((t, i) => (
@@ -130,7 +130,7 @@ export default function Home() {
                 Two levers. One priority at a time.
               </h2>
               <p className="mt-4 text-[1.1rem] leading-relaxed text-slate">
-                Most shops don&apos;t need ten projects. They need the one thing costing them the most, fixed properly, before
+                Most businesses don&apos;t need ten projects. They need the one thing costing them the most, fixed properly, before
                 moving to the next.
               </p>
             </Reveal>
