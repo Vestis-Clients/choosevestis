@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 const PROBLEMS = [
   "Missed calls and slow lead follow-up",
-  "Not showing up on Google or AI search",
+  "Not ranking well on Google or AI search",
   "Sales process feels broken",
   "Proposals and estimates that don't close",
   "Too much admin and paperwork",
