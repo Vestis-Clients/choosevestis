@@ -8,6 +8,9 @@ type Payload = {
   details?: unknown;
   bottleneck?: unknown;
   contactPref?: unknown;
+  teamSize?: unknown;
+  leadSources?: unknown;
+  tried?: unknown;
   website?: unknown;
   elapsedMs?: unknown;
 };
@@ -51,8 +54,11 @@ export async function POST(req: Request) {
     phone: str(body.phone, 40),
     email: str(body.email, 200),
     details: str(body.details, 2000),
-    bottleneck: str(body.bottleneck, 120),
+    bottleneck: str(body.bottleneck, 600),
     contactPref: str(body.contactPref, 20) || "Call",
+    teamSize: str(body.teamSize, 20),
+    leadSources: str(body.leadSources, 300),
+    tried: str(body.tried, 500),
   };
 
   if (!data.name) return Response.json({ error: "Add your name." }, { status: 400 });
@@ -71,29 +77,32 @@ export async function POST(req: Request) {
 
   const rows: [string, string][] = [
     ["Name", data.name],
-    ["Business / trade", data.business || "—"],
+    ["Company", data.business || "—"],
     ["Phone", data.phone || "—"],
     ["Email", data.email || "—"],
     ["Prefers", data.contactPref],
-    ["Bottleneck", data.bottleneck || "—"],
+    ["Holding them back", data.bottleneck || "—"],
+    ["Team size", data.teamSize || "—"],
+    ["Leads come from", data.leadSources || "—"],
+    ["Already tried", data.tried || "—"],
   ];
 
   const html = `
-  <div style="font-family:Inter,Arial,sans-serif;color:#17271d;max-width:560px">
-    <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#4e6b47;margin:0 0 8px">New fit call request</p>
+  <div style="font-family:Arial,Helvetica,sans-serif;color:#15191e;max-width:560px">
+    <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#1d3a5c;margin:0 0 8px">New fit call request</p>
     <h1 style="font-size:22px;margin:0 0 20px">${esc(data.name)}${data.business ? ` · ${esc(data.business)}` : ""}</h1>
     <table style="border-collapse:collapse;width:100%;font-size:15px">
       ${rows
         .map(
           ([k, v]) =>
-            `<tr><td style="padding:8px 12px 8px 0;color:#5b665e;border-bottom:1px solid #e3e5dd;white-space:nowrap">${k}</td><td style="padding:8px 0;border-bottom:1px solid #e3e5dd">${esc(v)}</td></tr>`,
+            `<tr><td style="padding:8px 12px 8px 0;color:#5a6472;border-bottom:1px solid #e2e5e9;white-space:nowrap">${k}</td><td style="padding:8px 0;border-bottom:1px solid #e2e5e9">${esc(v)}</td></tr>`,
         )
         .join("")}
     </table>
-    ${data.details ? `<p style="margin:20px 0 6px;color:#5b665e">In their words</p><p style="margin:0;font-size:15px;line-height:1.55;white-space:pre-wrap">${esc(data.details)}</p>` : ""}
+    ${data.details ? `<p style="margin:20px 0 6px;color:#5a6472">Biggest pressure right now</p><p style="margin:0;font-size:15px;line-height:1.55;white-space:pre-wrap">${esc(data.details)}</p>` : ""}
   </div>`;
 
-  const text = rows.map(([k, v]) => `${k}: ${v}`).join("\n") + (data.details ? `\n\nIn their words:\n${data.details}` : "");
+  const text = rows.map(([k, v]) => `${k}: ${v}`).join("\n") + (data.details ? `\n\nBiggest pressure right now:\n${data.details}` : "");
 
   try {
     const resend = new Resend(apiKey);

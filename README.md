@@ -5,7 +5,7 @@ The Vestis Solutions LLC website. It's built with Next.js and deploys to Vercel.
 ## What's on the site
 - **Landing page**: live lead board hero, scroll-driven 90-day section, animated levers, pricing.
 - **Fit call form** (`#contact`): sends each request to contact@choosevestis.com through Resend. Reply-to is the visitor's email.
-- **"Message Alex" button**: WhatsApp, Messenger, Email. Links go through `/go/<channel>` so no number or link is in the page source.
+- **"Message Alex" button**: Messenger and Email (WhatsApp appears if `WHATSAPP_URL` is set). Links go through `/go/<channel>` so no number or link is in the page source.
 - `/contact` redirects to the form.
 
 ## How it's set up
@@ -23,7 +23,6 @@ The Vestis Solutions LLC website. It's built with Next.js and deploys to Vercel.
 | `RESEND_API_KEY` | Resend key, sending access, choosevestis.com only |
 | `WHATSAPP_URL` | WhatsApp Business short link (wa.me/message/...). Empty = hidden |
 | `MESSENGER_PAGE` | Facebook Page username. Empty = hidden |
-| `NEXT_PUBLIC_FOUNDING_SPOTS_LEFT` | 0-3, or empty to hide the counter |
 
 Redeploy after changing any variable.
 

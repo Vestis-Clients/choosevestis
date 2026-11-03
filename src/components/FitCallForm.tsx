@@ -3,15 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 
 const PROBLEMS = [
-  "Missed calls and slow lead response",
-  "Estimates that never get followed up",
-  "Not showing up on Google",
-  "Scheduling and job handoffs",
-  "Too much paperwork and admin",
+  "Missed calls and slow lead follow-up",
+  "Not showing up on Google or AI search",
+  "Sales process feels broken",
+  "Proposals and estimates that don't close",
+  "Too much admin and paperwork",
+  "Team or crew issues",
+  "Busy, but not more profitable",
   "Something else",
 ];
 
-const CONTACT_PREFS = ["Call", "Text", "Email", "WhatsApp"];
+const TEAM_SIZES = ["Just me", "2–5", "6–15", "16–50", "50+"];
+
+const CONTACT_PREFS = ["Call", "Text", "Email", "Messenger"];
 
 type Status = { kind: "idle" } | { kind: "sending" } | { kind: "sent"; name: string } | { kind: "error"; message: string };
 
@@ -42,13 +46,14 @@ function Field({
   );
 }
 
-export default function FitCallForm() {
+export default function FitCallForm({ messenger = false }: { messenger?: boolean }) {
   const started = useRef(0);
   useEffect(() => {
     started.current = Date.now();
   }, []);
   const [problems, setProblems] = useState<string[]>([]);
   const [pref, setPref] = useState("Call");
+  const [team, setTeam] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<Status>({ kind: "idle" });
 
@@ -68,6 +73,9 @@ export default function FitCallForm() {
       email: String(fd.get("email") || "").trim(),
       details: String(fd.get("details") || "").trim(),
       bottleneck: problems.join("; "),
+      teamSize: team,
+      leadSources: String(fd.get("leadSources") || "").trim(),
+      tried: String(fd.get("tried") || "").trim(),
       contactPref: pref,
       website: String(fd.get("website") || ""),
       elapsedMs: Date.now() - started.current,
@@ -78,7 +86,7 @@ export default function FitCallForm() {
     if (!data.phone && !data.email) next.phone = "Add a phone number or email so I can reach you.";
     if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) next.email = "Check the email address.";
     if (data.phone && data.phone.replace(/\D/g, "").length < 10) next.phone = "Use a 10-digit phone number.";
-    if (!problems.length && !data.details) next.problems = "Pick at least one, or describe it in the notes.";
+    if (!problems.length && !data.details) next.problems = "Pick at least one, or describe it below.";
     setErrors(next);
     if (Object.keys(next).length) return;
 
@@ -112,8 +120,20 @@ export default function FitCallForm() {
         </span>
         <p className="mt-5 text-[1.4rem] font-semibold tracking-tight">Request received, {status.name}.</p>
         <p className="mt-2 max-w-[30rem] leading-relaxed text-slate">
-          I&apos;ll reach out by {pref.toLowerCase()} within one business day to set up your fit call.
+          {pref === "Messenger"
+            ? "Messenger only lets me reply after you send the first message. Tap below to start the chat, and I'll pick it up there within one business day."
+            : `I'll reach out by ${pref.toLowerCase()} within one business day to set up your fit call.`}
         </p>
+        {pref === "Messenger" && messenger && (
+          <a
+            href="/go/messenger"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="mt-5 inline-block rounded-md bg-navy px-5 py-2.5 font-medium text-white hover:bg-navy-dark"
+          >
+            Open Messenger
+          </a>
+        )}
       </div>
     );
   }
@@ -121,7 +141,7 @@ export default function FitCallForm() {
   return (
     <form onSubmit={onSubmit} noValidate className={`${card} relative grid gap-6`}>
       <fieldset>
-        <legend className="text-[0.92rem] font-medium">What&apos;s slowing you down? Pick any that apply.</legend>
+        <legend className="text-[0.92rem] font-medium">What&apos;s holding back your next stage of growth? Pick any that apply.</legend>
         <div className="mt-3 grid gap-2 sm:grid-cols-2">
           {PROBLEMS.map((p) => {
             const on = problems.includes(p);
@@ -141,22 +161,58 @@ export default function FitCallForm() {
         {errors.problems && <p className="mt-2 text-[0.85rem] text-error">{errors.problems}</p>}
       </fieldset>
 
-      <Field label="Anything else I should know" optional>
+      <Field label="What's the biggest pressure on you right now?" optional>
         <textarea
           name="details"
           rows={3}
           maxLength={2000}
           className={`${input()} resize-y`}
-          placeholder="We get 30+ calls a week and I don't know how many turn into jobs."
+          placeholder="Revenue is up, but I'm working every weekend and I still don't know where the money goes."
         />
+      </Field>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <fieldset>
+          <legend className="text-[0.92rem] font-medium">
+            Team size <span className="font-normal text-slate">(optional)</span>
+          </legend>
+          <div className="mt-1.5 flex flex-wrap gap-1.5">
+            {TEAM_SIZES.map((t) => (
+              <label
+                key={t}
+                className={`cursor-pointer rounded-md border px-3 py-2 text-[0.9rem] has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-navy ${
+                  team === t ? "border-navy bg-navy-tint font-medium text-navy-dark" : "border-line hover:border-slate"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="team"
+                  value={t}
+                  checked={team === t}
+                  onChange={() => setTeam(team === t ? "" : t)}
+                  onClick={() => team === t && setTeam("")}
+                  className="sr-only"
+                />
+                {t}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <Field label="How do customers find you today?" optional>
+          <input name="leadSources" maxLength={300} className={input()} placeholder="Referrals, Google, Facebook…" />
+        </Field>
+      </div>
+
+      <Field label="What have you already tried?" optional>
+        <input name="tried" maxLength={500} className={input()} placeholder="An agency, a new CRM, hired an office manager…" />
       </Field>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name" error={errors.name}>
           <input name="name" autoComplete="name" className={input(errors.name)} aria-invalid={!!errors.name} />
         </Field>
-        <Field label="Company and trade" optional>
-          <input name="business" autoComplete="organization" className={input()} placeholder="Carter Plumbing, plumbing" />
+        <Field label="Company" optional>
+          <input name="business" autoComplete="organization" className={input()} placeholder="Carter Plumbing" />
         </Field>
         <Field label="Phone" error={errors.phone}>
           <input name="phone" type="tel" inputMode="tel" autoComplete="tel" className={input(errors.phone)} aria-invalid={!!errors.phone} />
@@ -169,7 +225,7 @@ export default function FitCallForm() {
       <fieldset>
         <legend className="text-[0.92rem] font-medium">Best way to reach you</legend>
         <div className="mt-3 inline-flex flex-wrap rounded-md border border-line bg-mist p-1">
-          {CONTACT_PREFS.map((p) => (
+          {CONTACT_PREFS.filter((p) => p !== "Messenger" || messenger).map((p) => (
             <label
               key={p}
               className={`cursor-pointer rounded px-4 py-1.5 text-[0.92rem] has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-navy ${
@@ -181,6 +237,11 @@ export default function FitCallForm() {
             </label>
           ))}
         </div>
+        {pref === "Messenger" && (
+          <p className="mt-2.5 max-w-[34rem] text-[0.86rem] leading-relaxed text-slate">
+            Messenger only lets me reply after you message first. After you submit, you&apos;ll get a button to start the chat.
+          </p>
+        )}
       </fieldset>
 
       {/* Honeypot */}

@@ -36,7 +36,6 @@ function Check() {
 }
 
 export default function Home() {
-  const spots = site.foundingSpotsLeft === "" ? null : Math.max(0, Math.min(3, Number(site.foundingSpotsLeft) || 0));
   const wrap = "mx-auto max-w-[74rem] px-5 sm:px-8";
   const h2 = "text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.025em] [text-wrap:balance]";
 
@@ -149,34 +148,30 @@ export default function Home() {
           <div className={`${wrap} grid gap-12 py-24 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16 lg:py-28`}>
             <Reveal>
               <h2 id="pricing-title" className={h2}>
-                One clear scope. One monthly price.
+                Upfront pricing. Scope set together.
               </h2>
               <p className="mt-4 max-w-[28rem] text-[1.1rem] leading-relaxed text-slate">
-                You&apos;ll know exactly what&apos;s included, and what isn&apos;t, before we start. Anything outside the scope is
-                quoted separately and only goes ahead with your approval.
+                Partnerships start at $3,000 a month. On the fit call we agree on what needs fixing first. If your business needs
+                more, you&apos;ll see the number before anything starts, and anything outside the scope only goes ahead with your
+                approval.
               </p>
             </Reveal>
 
             <Reveal delay={0.1}>
               <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-[0_40px_80px_-48px_rgba(21,25,30,0.45)]">
                 <div className="border-b border-line px-7 py-7 sm:px-9">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <p className="font-semibold">90-day founding partnership</p>
-                    <p className="rounded-full bg-navy-tint px-3 py-1 text-[0.82rem] font-medium text-navy">
-                      {spots === null
-                        ? "Founding rate, first 3 clients"
-                        : spots === 0
-                          ? "Founding spots are full"
-                          : `${spots} of 3 founding spots open`}
-                    </p>
-                  </div>
+                  <p className="font-semibold">Founding partnership</p>
                   <p className="mt-5 flex items-baseline gap-2">
+                    <span className="self-end pb-1.5 text-slate">from</span>
                     <span className="text-[3.6rem] font-semibold leading-none tracking-[-0.045em]">
                       <CountUp to={3000} prefix="$" />
                     </span>
                     <span className="text-slate">per month</span>
                   </p>
-                  <p className="mt-3 text-[0.95rem] text-slate">Billed monthly. $9,000 initial commitment over three months.</p>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-slate">
+                    Billed monthly. We start with 90 days, long enough to fix something real and measure it, then continue month to
+                    month. Scope is confirmed after the fit call.
+                  </p>
                 </div>
                 <ul className="divide-y divide-line px-7 sm:px-9">
                   {included.map(([k, v]) => (
@@ -226,7 +221,7 @@ export default function Home() {
                 </div>
               </div>
             </Reveal>
-            <FitCallForm />
+            <FitCallForm messenger={channels().some((c) => c.id === "messenger")} />
           </div>
         </section>
       </main>

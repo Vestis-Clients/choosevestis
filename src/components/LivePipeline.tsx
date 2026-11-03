@@ -212,7 +212,7 @@ export default function LivePipeline() {
           {/* Desktop: four columns */}
           <div className="hidden grid-cols-4 gap-3 p-4 md:grid">
             {STAGES.map((s, col) => (
-              <div key={s} className="min-h-[19rem] rounded-xl bg-mist p-2.5">
+              <div key={s} className="h-[22rem] overflow-hidden rounded-xl bg-mist p-2.5">
                 <div className="flex items-center justify-between px-1.5 pb-2.5 pt-1">
                   <p className="text-[0.8rem] font-semibold text-slate">{s}</p>
                   <p className="text-[0.75rem] tabular-nums text-slate">{OTHERS[col].length + (shown === col ? 1 : 0)}</p>
@@ -266,7 +266,7 @@ export default function LivePipeline() {
               ))}
             </div>
             {now && (
-              <div className="mt-4 rounded-lg border-[1.5px] border-navy bg-white p-3.5">
+              <div className="mt-4 min-h-[7.25rem] rounded-lg border-[1.5px] border-navy bg-white p-3.5">
                 <p className="font-semibold">{lead.name}</p>
                 <p className="text-[0.88rem] text-slate">{lead.job}</p>
                 <p className="mt-2 flex items-center gap-1.5 text-[0.82rem] font-medium">
@@ -275,7 +275,7 @@ export default function LivePipeline() {
                 </p>
               </div>
             )}
-            <div className="mt-3 min-h-[5.2rem]">
+            <div className="mt-3 h-[6.5rem]">
               <AnimatePresence mode="wait">{now && <Notification i={shown} lead={lead.name} key={`${leadIdx}-${shown}`} />}</AnimatePresence>
             </div>
           </div>

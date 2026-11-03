@@ -15,8 +15,6 @@ export const site = {
   owner: "Alex",
   // Mailbox name only; the "@choosevestis.com" is joined client-side.
   emailUser: process.env.NEXT_PUBLIC_CONTACT_EMAIL_USER || "contact",
-  // How many founding spots are still open (0–3). Empty = don't show a count.
-  foundingSpotsLeft: process.env.NEXT_PUBLIC_FOUNDING_SPOTS_LEFT ?? "",
 };
 
 export const prefill =
