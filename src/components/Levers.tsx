@@ -61,7 +61,7 @@ function SearchRank({ go }: { go: boolean }) {
       >
         <p className="flex items-center gap-1.5 text-[0.72rem] font-medium text-slate">
           <span className="grid h-4 w-4 place-items-center rounded bg-navy text-[0.55rem] font-bold text-white">AI</span>
-          Answer
+          ChatGPT / Gemini answer
         </p>
         <p className="mt-1 text-[0.8rem] leading-snug text-ink">
           A good option nearby is <span className="font-semibold">Your business</span>, known for fast, honest work.
@@ -211,10 +211,10 @@ function Decisions({ go }: { go: boolean }) {
 const CARDS = [
   {
     name: "More leads",
-    title: "Get found on Google and mentioned in AI answers.",
+    title: "Get found on Google, ChatGPT and Gemini.",
     points: [
       ["SEO.", "Your website and Google profile built to rank for the jobs you actually want."],
-      ["AEO.", "Show up when customers ask ChatGPT or Gemini who to call."],
+      ["AEO.", "Show up in AI answers when customers ask who to call."],
     ],
     Art: SearchRank,
   },
