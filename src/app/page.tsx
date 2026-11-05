@@ -21,10 +21,32 @@ function Mark({ className = "h-8 w-8" }: { className?: string }) {
 const TRADES = ["Roofing", "HVAC", "Plumbing", "Electrical", "Remodeling", "Landscaping", "Concrete", "Painting", "Fencing", "Pest control"];
 
 const included: [string, string][] = [
-  ["Owner working sessions", "Four 30-minute sessions a month"],
-  ["Implementation", "One active priority at a time"],
-  ["Support", "Between-call support and a monthly scorecard"],
+  ["Ongoing SEO and AEO", "Monthly work on your website, Google profile, and AI visibility"],
+  ["Sales process review", "Find where leads leak, then fix it with your team"],
+  ["Owner working sessions", "Four 30-minute sessions a month, plus support between calls"],
   ["Delivery hours", "Up to 12 a month, covering meetings, implementation, and support"],
+];
+
+const GET = [
+  {
+    title: "Ongoing SEO and AEO",
+    body: "Monthly work on your website, Google profile and content, so more of the right customers find you on Google and in AI answers.",
+  },
+  {
+    title: "A sales process review",
+    body: "I walk through how your leads are handled, from first call to signed job, find where they leak, and fix it with your team.",
+  },
+  {
+    title: "An experienced partner",
+    body: "CEO, COO, CTO and CMO-level advice on the decisions in front of you: pricing, hiring, cash flow, systems and growth.",
+  },
+];
+
+const EXPERIENCE: { to: number; prefix?: string; suffix?: string; group?: boolean; label: string }[] = [
+  { to: 12, suffix: " yrs", label: "in banking and commercial finance" },
+  { to: 11, suffix: " yrs", label: "as an entrepreneur" },
+  { to: 18, prefix: "$", suffix: "M+", label: "annual revenue at a company I founded and grew" },
+  { to: 2019, group: false, label: "bought a software business, grew it, and rebuilt it for AI" },
 ];
 
 function Check() {
@@ -51,7 +73,10 @@ export default function Home() {
           </Link>
           <nav className="flex items-center gap-7 text-[0.95rem]">
             <a href="#approach" className="hidden text-slate hover:text-ink md:inline">
-              Approach
+              What I fix
+            </a>
+            <a href="#value" className="hidden text-slate hover:text-ink md:inline">
+              What you get
             </a>
             <a href="#process" className="hidden text-slate hover:text-ink md:inline">
               Process
@@ -82,13 +107,13 @@ export default function Home() {
               </p>
             </Reveal>
             <HeroTitle
-              lines={["Win better work.", "Run a better business."]}
-              className="mx-auto mt-7 max-w-[56rem] text-[clamp(2.7rem,7.2vw,5.6rem)] font-semibold leading-[1.0] tracking-[-0.045em]"
+              lines={["More of the right leads.", "A business ready for them."]}
+              className="mx-auto mt-7 max-w-[66rem] text-[clamp(2.15rem,6.2vw,5.1rem)] font-semibold leading-[1.0] tracking-[-0.045em]"
             />
             <Reveal delay={0.35}>
               <p className="mx-auto mt-7 max-w-[38rem] text-[1.2rem] leading-relaxed text-slate">
-                Hands-on help to win the right jobs, simplify how work gets done, and take pressure off the owner, without another
-                full-time hire.
+                I get you found on Google and in AI answers like ChatGPT, fix the sales process so those leads turn into jobs, and
+                clear the bottlenecks that keep you working nights and weekends.
               </p>
             </Reveal>
             <Reveal delay={0.45}>
@@ -127,14 +152,56 @@ export default function Home() {
           <div className={`${wrap} py-24 lg:py-28`}>
             <Reveal className="max-w-[40rem]">
               <h2 id="approach-title" className={h2}>
-                Two levers. One priority at a time.
+                Four things I fix.
               </h2>
               <p className="mt-4 text-[1.1rem] leading-relaxed text-slate">
-                Most businesses don&apos;t need ten projects. They need the one thing costing them the most, fixed properly, before
-                moving to the next.
+                Increasing lead flow on a broken system only brings more stress, more problems, and eats up your nights and
+                weekends. So I find the bottleneck first, then turn up the volume.
               </p>
             </Reveal>
             <Levers />
+          </div>
+        </section>
+
+        {/* What you get */}
+        <section id="value" aria-labelledby="value-title" className="scroll-mt-16 border-b border-line bg-white">
+          <div className={`${wrap} py-24 lg:py-28`}>
+            <Reveal className="max-w-[40rem]">
+              <h2 id="value-title" className={h2}>
+                What you get.
+              </h2>
+              <p className="mt-4 text-[1.1rem] leading-relaxed text-slate">Three things, every month. Not a twenty-point plan.</p>
+            </Reveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {GET.map((g, i) => (
+                <Reveal key={g.title} delay={i * 0.08}>
+                  <div className="h-full rounded-2xl border border-line bg-mist p-7">
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-navy text-[0.9rem] font-semibold text-white">{i + 1}</span>
+                    <h3 className="mt-5 text-[1.35rem] font-semibold tracking-tight">{g.title}</h3>
+                    <p className="mt-2 leading-relaxed text-slate">{g.body}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={0.1}>
+              <div className="mt-5 rounded-2xl bg-navy px-7 py-9 text-white sm:px-10">
+                <p className="text-[0.9rem] font-medium text-white/70">Who you&apos;re working with</p>
+                <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                  {EXPERIENCE.map((e) => (
+                    <div key={e.label}>
+                      <p className="text-[2.6rem] font-semibold leading-none tracking-[-0.03em]">
+                        <CountUp to={e.to} prefix={e.prefix} suffix={e.suffix} group={e.group} />
+                      </p>
+                      <p className="mt-2 text-[0.95rem] leading-snug text-white/75">{e.label}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-8 border-t border-white/15 pt-6 text-[1.05rem] text-white/85">
+                  I&apos;ve seen feast and famine. You get that experience at the table, every month.
+                </p>
+              </div>
+            </Reveal>
           </div>
         </section>
 

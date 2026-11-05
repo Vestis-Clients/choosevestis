@@ -20,7 +20,7 @@ export function StickyHeader({ children }: { children: React.ReactNode }) {
 }
 
 /** Counts up to a number the first time it scrolls into view. */
-export function CountUp({ to, prefix = "" }: { to: number; prefix?: string }) {
+export function CountUp({ to, prefix = "", suffix = "", group = true }: { to: number; prefix?: string; suffix?: string; group?: boolean }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const reduced = useReducedMotion();
@@ -33,7 +33,8 @@ export function CountUp({ to, prefix = "" }: { to: number; prefix?: string }) {
   return (
     <span ref={ref} className="tabular-nums">
       {prefix}
-      {val.toLocaleString("en-US")}
+      {group ? val.toLocaleString("en-US") : val}
+      {suffix}
     </span>
   );
 }

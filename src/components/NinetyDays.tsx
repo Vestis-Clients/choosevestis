@@ -4,18 +4,18 @@ import { useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "motion/react";
 
 const STEPS = [
-  { from: 0, title: "Find the constraint", when: "Day 1", body: "Set a baseline and agree on the highest-impact priority." },
-  { from: 8, title: "Build the fix", when: "Then", body: "Implement one scoped improvement at a time." },
-  { from: 30, title: "Measure progress", when: "Every 30 days", body: "Track conversion, time saved, or gross profit on a monthly scorecard." },
+  { from: 0, title: "Find the bottleneck", when: "Day 1", body: "We dig into how the business runs and agree on the pressure point that matters most." },
+  { from: 8, title: "Fix it", when: "Then", body: "One focused fix at a time, with SEO and AEO work running in the background." },
+  { from: 30, title: "Review together", when: "Every 30 days", body: "We look at what changed and decide what's next." },
 ];
 
 const MILESTONES = [
-  { day: 1, label: "Baseline set" },
-  { day: 5, label: "Priority agreed" },
-  { day: 21, label: "First fix live" },
-  { day: 30, label: "Scorecard, month 1" },
-  { day: 60, label: "Scorecard, month 2" },
-  { day: 90, label: "Scorecard, month 3" },
+  { day: 1, label: "Kickoff and discovery" },
+  { day: 7, label: "Top priority agreed" },
+  { day: 14, label: "SEO and AEO work underway" },
+  { day: 30, label: "First 30-day review" },
+  { day: 60, label: "Sales process review done" },
+  { day: 90, label: "90-day review, next priority set" },
 ];
 
 export default function NinetyDays() {
@@ -74,7 +74,7 @@ export default function NinetyDays() {
           <div className="hidden items-center lg:flex">
             <div className="w-full rounded-2xl border border-line bg-white p-7 shadow-[0_40px_80px_-48px_rgba(21,25,30,0.45)]">
               <div className="flex items-center justify-between">
-                <p className="font-semibold">Partnership checklist</p>
+                <p className="font-semibold">Your first 90 days</p>
                 <p className="rounded-full bg-mist px-3 py-1 text-[0.8rem] tabular-nums text-slate">
                   {MILESTONES.filter((m) => day >= m.day).length} of {MILESTONES.length}
                 </p>

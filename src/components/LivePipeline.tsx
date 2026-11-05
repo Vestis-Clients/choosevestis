@@ -3,12 +3,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react";
 
-const STAGES = ["New lead", "Contacted", "Estimate sent", "Booked"] as const;
+const STAGES = ["New lead", "Answered", "Estimate sent", "Booked"] as const;
 
 const LEADS = [
-  { name: "Johnson", job: "Roof leak over garage", amount: "$8,450", trade: "Roofing" },
-  { name: "Martinez", job: "Water heater replacement", amount: "$2,180", trade: "Plumbing" },
-  { name: "Nguyen", job: "Full HVAC replacement", amount: "$11,900", trade: "HVAC" },
+  { name: "Johnson", job: "Roof leak over garage", amount: "$8,450", src: "Google search" },
+  { name: "Martinez", job: "Water heater replacement", amount: "$2,180", src: "ChatGPT" },
+  { name: "Nguyen", job: "Full HVAC replacement", amount: "$11,900", src: "Google Maps" },
 ];
 
 // Background jobs that sit in each column so the board looks like a real week.
@@ -46,9 +46,9 @@ function statusFor(stage: number, lead: (typeof LEADS)[number], now: Date) {
   const day = booked.toLocaleDateString("en-US", { weekday: "short" });
   switch (stage) {
     case 0:
-      return { dot: "bg-[#d64545]", text: `Missed call, ${fmtTime(now)}` };
+      return { dot: "bg-[#d99a1e]", text: `From ${lead.src}, ${fmtTime(now)}` };
     case 1:
-      return { dot: "bg-[#d99a1e]", text: "Auto-text sent in 1 min" };
+      return { dot: "bg-navy", text: "Answered in 2 min" };
     case 2:
       return { dot: "bg-navy", text: `${lead.amount} estimate sent` };
     default:
@@ -56,15 +56,18 @@ function statusFor(stage: number, lead: (typeof LEADS)[number], now: Date) {
   }
 }
 
-const NOTES = [
-  { icon: "call", tone: "bg-[#fdeaea] text-[#c23a3a]", title: "Missed call", body: (l: string) => `${l} called while you were on a roof.` },
-  { icon: "text", tone: "bg-[#fdf3e1] text-[#a86f0b]", title: "Text sent automatically", body: () => `"Sorry we missed you! What can we help with?"` },
+type Note = { icon: string; tone: string; title: string; body: (lead: string, src: string) => string };
+
+const NOTES: Note[] = [
+  { icon: "search", tone: "bg-[#fdf3e1] text-[#a86f0b]", title: "New lead", body: (l: string, src: string) => `${l} found you through ${src}.` },
+  { icon: "text", tone: "bg-navy-tint text-navy", title: "Answered fast", body: () => "Replied in 2 minutes, even while you were on a job." },
   { icon: "doc", tone: "bg-navy-tint text-navy", title: "Estimate follow-up", body: () => "Day 2 reminder scheduled. Nothing to remember." },
   { icon: "check", tone: "bg-[#e3f5ec] text-[#16794b]", title: "Job booked", body: (l: string) => `${l} picked a time. It's on the calendar.` },
 ];
 
 function Icon({ name }: { name: string }) {
   const p: Record<string, React.ReactNode> = {
+    search: <path d="M11 4a7 7 0 1 1 0 14 7 7 0 0 1 0-14z M20 20l-4-4" />,
     call: <path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v3a3 3 0 0 1-3 3A15 15 0 0 1 3 6a3 3 0 0 1 3-3z" />,
     text: <path d="M4 5h16v11H9l-5 4z" />,
     doc: <path d="M6 3h9l4 4v14H6z M14 3v5h5 M9 13h7M9 17h5" />,
@@ -108,7 +111,7 @@ function Float({
   );
 }
 
-function Notification({ i, lead }: { i: number; lead: string }) {
+function Notification({ i, lead, src }: { i: number; lead: string; src: string }) {
   const n = NOTES[i];
   return (
     <motion.div
@@ -128,7 +131,7 @@ function Notification({ i, lead }: { i: number; lead: string }) {
             <p className="text-[0.88rem] font-semibold">{n.title}</p>
             <p className="text-[0.75rem] text-slate">now</p>
           </div>
-          <p className="mt-0.5 text-[0.84rem] leading-snug text-slate">{n.body(lead)}</p>
+          <p className="mt-0.5 text-[0.84rem] leading-snug text-slate">{n.body(lead, src)}</p>
         </div>
       </div>
     </motion.div>
@@ -276,7 +279,7 @@ export default function LivePipeline() {
               </div>
             )}
             <div className="mt-3 h-[6.5rem]">
-              <AnimatePresence mode="wait">{now && <Notification i={shown} lead={lead.name} key={`${leadIdx}-${shown}`} />}</AnimatePresence>
+              <AnimatePresence mode="wait">{now && <Notification i={shown} lead={lead.name} src={lead.src} key={`${leadIdx}-${shown}`} />}</AnimatePresence>
             </div>
           </div>
         </LayoutGroup>
@@ -286,7 +289,7 @@ export default function LivePipeline() {
       <div className="pointer-events-none hidden lg:block">
         <Float depth={-26} mx={mx} my={my} className="-right-16 top-6" bob={0}>
           <div className="min-h-[5.5rem]">
-            <AnimatePresence mode="wait">{now && <Notification i={shown} lead={lead.name} key={`${leadIdx}-${shown}`} />}</AnimatePresence>
+            <AnimatePresence mode="wait">{now && <Notification i={shown} lead={lead.name} src={lead.src} key={`${leadIdx}-${shown}`} />}</AnimatePresence>
           </div>
         </Float>
 
@@ -297,8 +300,8 @@ export default function LivePipeline() {
             transition={{ delay: 1.1, duration: 0.6 }}
             className="w-[13.5rem] rounded-2xl border border-white/70 bg-white/85 p-4 shadow-[0_20px_40px_-18px_rgba(21,25,30,0.35)] backdrop-blur-xl"
           >
-            <p className="text-[0.78rem] font-medium text-slate">This lead</p>
-            <p className="mt-1 text-[0.95rem] font-semibold">{lead.trade}</p>
+            <p className="text-[0.78rem] font-medium text-slate">This lead came from</p>
+            <p className="mt-1 text-[0.95rem] font-semibold">{lead.src}</p>
             <div className="mt-3 grid gap-1.5">
               {["Answered", "Quoted", "Followed up", "Booked"].map((s, i) => (
                 <div key={s} className="flex items-center gap-2 text-[0.8rem]">
@@ -338,7 +341,7 @@ export default function LivePipeline() {
         </Float>
       </div>
 
-      <p className="mt-6 text-center text-[0.8rem] text-slate lg:mt-12">An example of a lead flow I set up. Names are illustrative.</p>
+      <p className="mt-6 text-center text-[0.8rem] text-slate lg:mt-12">An example of how a customer finds a business and becomes a booked job. Names are illustrative.</p>
     </div>
   );
 }

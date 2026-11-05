@@ -13,7 +13,7 @@ const plex = localFont({
 
 const title = "Vestis Solutions | Fractional Growth Partner for owner-led businesses";
 const description =
-  "Hands-on help for owner-led businesses to win the right work, fix the systems behind it, and get found on Google and AI search, without another full-time hire. Based in Charlotte, NC.";
+  "More of the right leads, and a business ready for them. SEO and AEO, a sales process that closes, connected systems, and executive-level advice for owner-led businesses. Based in Charlotte, NC.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
