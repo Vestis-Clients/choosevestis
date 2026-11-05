@@ -259,11 +259,10 @@ function Card({ c, i }: { c: (typeof CARDS)[number]; i: number }) {
       transition={{ duration: 0.6, delay: (i % 2) * 0.1, ease: [0.16, 1, 0.3, 1] }}
       className="flex flex-col rounded-2xl border border-line bg-white p-6 sm:p-8"
     >
-      <Art go={go} />
-      <p className="mt-7 text-[0.9rem] font-medium text-navy">
+      <p className="text-[1.2rem] font-semibold tracking-tight text-navy">
         {i + 1}. {name}
       </p>
-      <h3 className="mt-1.5 text-[1.6rem] font-semibold leading-tight tracking-tight">{title}</h3>
+      <h3 className="mt-1 text-[1.55rem] font-semibold leading-tight tracking-tight">{title}</h3>
       <ul className="mt-5 grid gap-3.5">
         {points.map(([lead, rest]) => (
           <li key={lead} className="flex gap-3 text-[1.02rem] leading-relaxed text-slate">
@@ -274,6 +273,9 @@ function Card({ c, i }: { c: (typeof CARDS)[number]; i: number }) {
           </li>
         ))}
       </ul>
+      <div className="mt-auto pt-7">
+        <Art go={go} />
+      </div>
     </motion.article>
   );
 }

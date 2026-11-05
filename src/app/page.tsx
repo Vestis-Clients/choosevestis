@@ -148,12 +148,15 @@ export default function Home() {
               <h2 id="approach-title" className={h2}>
                 Four things I fix.
               </h2>
-              <p className="mt-4 text-[1.1rem] leading-relaxed text-slate">
-                Increasing lead flow on a broken system only brings more stress, more problems, and eats up your nights and
-                weekends. So I find the bottleneck first, then turn up the volume.
-              </p>
             </Reveal>
             <Levers />
+            <Reveal className="mt-16 max-w-[56rem]">
+              <p className="text-[clamp(1.5rem,2.8vw,2.1rem)] font-semibold leading-[1.25] tracking-[-0.02em] [text-wrap:balance]">
+                Increasing lead flow on a broken system only brings more stress, more problems, and eats up your nights and
+                weekends.
+              </p>
+              <p className="mt-4 text-[1.15rem] text-slate">So I find the bottleneck first, then turn up the volume.</p>
+            </Reveal>
           </div>
         </section>
 
