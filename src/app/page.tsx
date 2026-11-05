@@ -150,7 +150,7 @@ export default function Home() {
               </h2>
             </Reveal>
             <Levers />
-            <Reveal className="mt-16 max-w-[56rem]">
+            <Reveal className="mt-16">
               <p className="text-[clamp(1.5rem,2.8vw,2.1rem)] font-semibold leading-[1.25] tracking-[-0.02em] [text-wrap:balance]">
                 Increasing lead flow on a broken system only brings more stress, more problems, and eats up your nights and
                 weekends.
