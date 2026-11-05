@@ -107,7 +107,7 @@ export default function Home() {
               </p>
             </Reveal>
             <HeroTitle
-              lines={["More of the right leads.", "A business ready for them."]}
+              lines={["Win better work.", "Run a better business."]}
               className="mx-auto mt-7 max-w-[66rem] text-[clamp(2.15rem,6.2vw,5.1rem)] font-semibold leading-[1.0] tracking-[-0.045em]"
             />
             <Reveal delay={0.35}>
