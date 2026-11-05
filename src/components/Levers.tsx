@@ -211,7 +211,7 @@ function Decisions({ go }: { go: boolean }) {
 const CARDS = [
   {
     name: "More leads",
-    title: "Get found on Google and in AI answers.",
+    title: "Get found on Google and mentioned in AI answers.",
     points: [
       ["SEO.", "Your website and Google profile built to rank for the jobs you actually want."],
       ["AEO.", "Show up when customers ask ChatGPT or Gemini who to call."],
@@ -241,7 +241,7 @@ const CARDS = [
     title: "Lead with conviction.",
     points: [
       ["Clear values.", "A culture and accountability that hold up when you're not in the room."],
-      ["Two decisions a day.", "Your job is the one or two calls that matter most. I help you find them."],
+      ["Two decisions a day.", "Your job is to make the one or two most important decisions each day. I help you find them."],
     ],
     Art: Decisions,
   },

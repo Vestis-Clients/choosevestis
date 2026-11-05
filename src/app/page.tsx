@@ -33,7 +33,7 @@ const GET = [
     body: "Monthly work on your website, Google profile and content, so more of the right customers find you on Google and in AI answers.",
   },
   {
-    title: "A sales process review",
+    title: "Sales process review",
     body: "I walk through how your leads are handled, from first call to signed job, find where they leak, and fix it with your team.",
   },
   {
