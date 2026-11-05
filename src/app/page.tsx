@@ -42,12 +42,6 @@ const GET = [
   },
 ];
 
-const EXPERIENCE: { to: number; prefix?: string; suffix?: string; group?: boolean; label: string }[] = [
-  { to: 12, suffix: " yrs", label: "in banking and commercial finance" },
-  { to: 11, suffix: " yrs", label: "as an entrepreneur" },
-  { to: 18, prefix: "$", suffix: "M+", label: "annual revenue at a company I founded and grew" },
-  { to: 2019, group: false, label: "bought a software business, grew it, and rebuilt it for AI" },
-];
 
 function Check() {
   return (
@@ -185,20 +179,13 @@ export default function Home() {
             </div>
 
             <Reveal delay={0.1}>
-              <div className="mt-5 rounded-2xl bg-navy px-7 py-9 text-white sm:px-10">
-                <p className="text-[0.9rem] font-medium text-white/70">Who you&apos;re working with</p>
-                <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                  {EXPERIENCE.map((e) => (
-                    <div key={e.label}>
-                      <p className="text-[2.6rem] font-semibold leading-none tracking-[-0.03em]">
-                        <CountUp to={e.to} prefix={e.prefix} suffix={e.suffix} group={e.group} />
-                      </p>
-                      <p className="mt-2 text-[0.95rem] leading-snug text-white/75">{e.label}</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-8 border-t border-white/15 pt-6 text-[1.05rem] text-white/85">
-                  I&apos;ve seen feast and famine. You get that experience at the table, every month.
+              <div className="mt-12 max-w-[44rem] border-l-2 border-navy pl-6">
+                <p className="text-[1.25rem] font-semibold leading-snug tracking-tight">
+                  You don&apos;t need another vendor. You need someone who&apos;s sat in your seat.
+                </p>
+                <p className="mt-3 text-[1.05rem] leading-relaxed text-slate">
+                  I&apos;ve spent two decades in banking and running my own businesses, through good years and lean ones. That&apos;s
+                  the perspective I bring to the decisions in front of you.
                 </p>
               </div>
             </Reveal>
