@@ -181,11 +181,12 @@ export default function Home() {
             <Reveal delay={0.1}>
               <div className="mt-12 max-w-[44rem] border-l-2 border-navy pl-6">
                 <p className="text-[1.25rem] font-semibold leading-snug tracking-tight">
-                  You don&apos;t need another vendor. You need someone who&apos;s sat in your seat.
+                  I&apos;ve seen business from both sides of the desk.
                 </p>
                 <p className="mt-3 text-[1.05rem] leading-relaxed text-slate">
-                  I&apos;ve spent two decades in banking and running my own businesses, through good years and lean ones. That&apos;s
-                  the perspective I bring to the decisions in front of you.
+                  For over a decade I was in banking and finance, working with business owners like you through cash crunches,
+                  growing pains and big wins. Then I co-founded a company with a partner and lived it myself. Now I bring both views
+                  to your business.
                 </p>
               </div>
             </Reveal>
