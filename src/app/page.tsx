@@ -21,6 +21,7 @@ function Mark({ className = "h-8 w-8" }: { className?: string }) {
 const TRADES = ["Roofing", "HVAC", "Plumbing", "Electrical", "Remodeling", "Landscaping", "Concrete", "Painting", "Fencing", "Pest control"];
 
 const included: [string, string][] = [
+  ["Website build or rebuild", "A new site, or a rebuild of yours, set up for Google and AI search"],
   ["Ongoing SEO and AEO", "Monthly work on your website, Google profile, and AI visibility"],
   ["Sales process review", "Find where leads leak, then fix it with your team"],
   ["Owner working sessions", "Four 30-minute sessions a month, plus support between calls"],
@@ -29,8 +30,8 @@ const included: [string, string][] = [
 
 const GET = [
   {
-    title: "Ongoing SEO and AEO",
-    body: "Monthly work on your website, Google profile and content, so more of the right customers find you on Google and in AI answers.",
+    title: "A website built to be found",
+    body: "A new website, or a rebuild of the one you have, set up for Google and AI search. Then ongoing SEO and AEO work keeps you showing up.",
   },
   {
     title: "Sales process review",
@@ -243,7 +244,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <div className="border-t border-line bg-mist px-7 py-5 text-[0.9rem] leading-relaxed text-slate sm:px-9">
-                  Not included: software, ad spend, major builds, and specialist services. These require your approval first.
+                  Optional: Google Local Services, Google Ads and social media ads. You pay the ad budget directly; management is quoted separately. Software and specialist services need your approval first.
                 </div>
                 <div className="px-7 py-6 sm:px-9">
                   <a href="#contact" className="block rounded-full bg-navy px-6 py-3.5 text-center font-medium text-white hover:bg-navy-dark">

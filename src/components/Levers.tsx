@@ -213,7 +213,7 @@ const CARDS = [
     name: "More leads",
     title: "Get found on Google, ChatGPT and Gemini.",
     points: [
-      ["SEO.", "Your website and Google profile built to rank for the jobs you actually want."],
+      ["SEO.", "A new website, or a rebuild of yours, set up to rank for the jobs you actually want."],
       ["AEO.", "Show up in AI answers when customers ask who to call."],
     ],
     Art: SearchRank,
