@@ -102,9 +102,9 @@ export default async function ServicePage({ params }: PageProps<"/[slug]">) {
                 <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-navy px-6 py-3 font-medium text-white hover:bg-navy-dark">
                   Book a free fit call
                 </a>
-                <a href="/#pricing" className="rounded-full border border-line bg-white px-6 py-3 font-medium hover:border-ink">
+                <Link href="/#pricing" className="rounded-full border border-line bg-white px-6 py-3 font-medium hover:border-ink">
                   See pricing
-                </a>
+                </Link>
               </div>
             </Reveal>
           </div>
