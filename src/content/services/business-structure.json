@@ -1,0 +1,80 @@
+{
+  "slug": "business-structure",
+  "keyword": "business structure setup",
+  "secondary": ["small business org chart", "roles and responsibilities", "organizational structure for small business", "meeting rhythm", "business scorecard"],
+  "title": "Business Structure Setup for Owners | Vestis Solutions",
+  "description": "Operational business structure setup: org chart, clear roles, reporting lines, a weekly meeting rhythm and a simple scorecard. Free fit call with Alex.",
+  "eyebrow": "Structure",
+  "h1": "Business structure setup that makes it clear who owns what",
+  "intro": "Ten people report to you, or they all report to nobody. Two people do the same task and a third thing falls through the cracks. Everyone works hard, but nobody is sure where their job ends and someone else's begins.",
+  "definition": "Business structure setup, in the operational sense, is designing how your company is organized day to day: the org chart, each role and its responsibilities, who reports to whom, the meetings that keep everyone aligned, and a scorecard of the few numbers that show how the business is doing.",
+  "sections": [
+    {
+      "h2": "What this page covers, and what it doesn't",
+      "paras": [
+        "When people search for business structure, they often mean the legal entity: LLC, S corp, partnership. That choice affects taxes and liability, and it belongs with your CPA and attorney. I don't give legal, tax or accounting advice.",
+        "This is about operational structure: how the people in your business are organized to get the work done. That's where most owner-led companies feel the pain."
+      ]
+    },
+    {
+      "h2": "What business structure setup includes",
+      "paras": [],
+      "bullets": [
+        "An org chart built around the seats the business needs, not around the people you happen to have",
+        "A short role description for each seat: what it owns, what it decides, and the numbers it's measured on",
+        "Clear reporting lines, so every person has one manager and you aren't everyone's boss",
+        "A meeting rhythm: a short weekly leadership meeting, team huddles where they help, and a quarterly look ahead",
+        "A weekly scorecard with 5 to 15 numbers, each with an owner, like leads, quotes sent, close rate, jobs scheduled and cash collected"
+      ]
+    },
+    {
+      "h2": "How I approach business structure setup",
+      "paras": [
+        "We start with the work, not the names. I map what has to happen for a job to be sold, delivered and paid for, then group that work into seats. Next we look at who sits in each seat today, where one person is in three seats, and where a seat is empty and the owner is quietly filling it.",
+        "Then we put it on paper and roll it out with your team. The weekly meeting and scorecard keep it real: when a number slips, everyone knows whose it is. Over the first 90 days, structure tends to settle fast once people can see it.",
+        "Structure is also what makes hiring work. When the seat is defined before you post the job, you know exactly who you're looking for."
+      ]
+    },
+    {
+      "h2": "A guide who has sat on both sides",
+      "paras": [
+        "For over a decade in banking and finance, I worked with business owners through growing pains, and a lot of those pains came down to unclear roles. Then I co-founded a company and dealt with it myself. I'm based in Charlotte, NC and work with owner-led businesses across the US, in person or remotely."
+      ]
+    }
+  ],
+  "signs": [
+    "Everyone reports to you, and you're the answer to every question",
+    "Two people think they own the same task, and nobody owns the next one",
+    "You don't have a written org chart, or it doesn't match reality",
+    "Team meetings happen when there's a problem, not on a schedule",
+    "You find out about problems from customers before your team",
+    "You want to hire but can't say exactly what the new person will own"
+  ],
+  "faq": [
+    {
+      "q": "What is business structure setup?",
+      "a": "In the operational sense, it's organizing how your company runs: the org chart, roles and responsibilities, reporting lines, meeting rhythm and a scorecard. It answers who owns what and how everyone stays aligned. Choosing a legal entity like an LLC or S corp is a separate decision for your CPA and attorney."
+    },
+    {
+      "q": "Can you help me choose between an LLC and an S corp?",
+      "a": "No, that decision belongs with your CPA and attorney. Entity type affects taxes, liability and contracts, and I don't give legal, tax or accounting advice. I help with the operational side: how your people, roles and meetings are organized so the business runs well."
+    },
+    {
+      "q": "How do I make an org chart for a small business?",
+      "a": "List the main functions first, like sales, operations, office and finance, then the seats under each. Give every seat a few key responsibilities and one manager. Only then put names in the boxes. If one person fills several seats, that's normal early on, just write it down."
+    },
+    {
+      "q": "What should a weekly team meeting cover?",
+      "a": "A good weekly meeting reviews the scorecard, checks progress on a few priorities, and solves the biggest issues on the list. Keep it to the same day, time and agenda every week. Most small leadership teams can do it in 60 to 90 minutes."
+    },
+    {
+      "q": "What is a business scorecard?",
+      "a": "A business scorecard is a short weekly list of the numbers that show how the company is doing. Each number has an owner and a target. For a trade business, that might be leads, quotes sent, close rate, jobs completed, cash collected and reviews earned."
+    },
+    {
+      "q": "When should a small business define roles and responsibilities?",
+      "a": "Earlier than most owners think, usually once you have more than a few employees or before your next hire. Clear roles stop tasks from falling through the cracks and make hiring easier. Without them, most decisions keep flowing back to the owner."
+    }
+  ],
+  "related": ["business-systems", "company-culture", "fractional-coo", "fractional-ceo"]
+}

@@ -38,16 +38,39 @@ export const viewport: Viewport = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": `${site.url}/#business`,
   name: site.legalName,
+  alternateName: site.name,
   url: site.url,
+  logo: `${site.url}/icon.svg`,
   description,
-  areaServed: "US",
+  slogan: "Win better work. Run a better business.",
+  priceRange: "From $3,000 per month",
+  areaServed: [
+    { "@type": "City", name: "Charlotte, NC" },
+    { "@type": "Country", name: "United States" },
+  ],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Charlotte",
     addressRegion: "NC",
     addressCountry: "US",
   },
+  founder: { "@type": "Person", name: "Alex Kiforishin", jobTitle: "Fractional Growth Partner" },
+  knowsAbout: [
+    "Fractional COO",
+    "Fractional CMO",
+    "Fractional CTO",
+    "Fractional CEO",
+    "Search engine optimization",
+    "Answer engine optimization",
+    "Sales process consulting",
+    "CRM integration",
+    "Business systems",
+    "Company culture",
+    "Roofing companies",
+    "Home service businesses",
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

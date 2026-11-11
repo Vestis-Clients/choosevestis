@@ -1,22 +1,12 @@
-import Link from "next/link";
 import LivePipeline from "@/components/LivePipeline";
 import Levers from "@/components/Levers";
 import NinetyDays from "@/components/NinetyDays";
 import FitCallForm from "@/components/FitCallForm";
 import MessageDock from "@/components/MessageDock";
-import { CountUp, HeroTitle, Reveal, StickyHeader } from "@/components/Bits";
+import { CountUp, HeroTitle, Reveal } from "@/components/Bits";
+import { SiteFooter, SiteHeader, wrap } from "@/components/Chrome";
 import EmailLink from "@/components/EmailLink";
 import { bookingUrl, channels, site } from "@/lib/site";
-
-function Mark({ className = "h-8 w-8" }: { className?: string }) {
-  return (
-    <span className={`grid shrink-0 place-items-center rounded-md bg-navy text-white ${className}`} aria-hidden>
-      <svg viewBox="0 0 32 32" className="h-[55%] w-[55%]" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="square">
-        <path d="M8 24 23 9M11 8h13v13" />
-      </svg>
-    </span>
-  );
-}
 
 const TRADES = ["Roofing", "HVAC", "Plumbing", "Electrical", "Remodeling", "Landscaping", "Concrete", "Painting", "Fencing", "Pest control"];
 
@@ -43,6 +33,33 @@ const GET = [
   },
 ];
 
+const FAQ: [string, string][] = [
+  [
+    "What is a fractional growth partner?",
+    "A fractional growth partner is one experienced person who works part time inside your business on the things that drive growth: getting found online, your sales process, your systems and the big decisions. You get COO, CMO, CTO and CEO-level help for a monthly fee instead of a full-time executive salary.",
+  ],
+  [
+    "How much does it cost?",
+    "Partnerships start at $3,000 a month. The first term is 90 days, long enough to fix something real and measure it, then it continues month to month. A website build or rebuild, ongoing SEO and AEO, a sales process review and four owner sessions a month are included. Paid ads are optional and extra.",
+  ],
+  [
+    "What kind of businesses do you work with?",
+    "Owner-led businesses, mostly trade and home-service companies: roofing, HVAC, plumbing, electrical, remodeling, landscaping and similar. They are usually past the startup stage, busy, and held back by leads that slip, tools that don't talk to each other, or an owner who is the bottleneck.",
+  ],
+  [
+    "Do you only work in Charlotte?",
+    "No. I'm based in Charlotte, NC and meet local clients in person, but most of the work happens online, so I work with businesses anywhere in the US. One of my current clients is a roofing company on the West Coast.",
+  ],
+  [
+    "Do I have to switch software?",
+    "No. I don't sell software. I work with the CRM, scheduling, estimating and phone tools you already use and connect them so leads and jobs stop falling through the cracks. If a tool truly isn't working, we decide together what to replace, and you approve any cost first.",
+  ],
+  [
+    "Can you guarantee I'll rank #1 on Google or show up in ChatGPT?",
+    "No, and you should be careful with anyone who does. Google and AI tools decide what they show. What I can do is give them every reason to pick you: a site built to be found, a complete Google profile, real reviews, and clear pages for each service and area you cover.",
+  ],
+];
+
 
 function Check() {
   return (
@@ -53,38 +70,11 @@ function Check() {
 }
 
 export default function Home() {
-  const wrap = "mx-auto max-w-[74rem] px-5 sm:px-8";
   const h2 = "text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.025em] [text-wrap:balance]";
 
   return (
     <div className="overflow-x-clip">
-      <StickyHeader>
-        <div className={`${wrap} flex h-16 items-center justify-between gap-6`}>
-          <Link href="/" className="flex items-center gap-2.5" aria-label={`${site.legalName} home`}>
-            <Mark />
-            <span className="text-[1.1rem] font-semibold tracking-tight">
-              Vestis <span className="font-normal text-slate">Solutions</span>
-            </span>
-          </Link>
-          <nav className="flex items-center gap-7 text-[0.95rem]">
-            <a href="#approach" className="hidden text-slate hover:text-ink md:inline">
-              What I fix
-            </a>
-            <a href="#value" className="hidden text-slate hover:text-ink md:inline">
-              What you get
-            </a>
-            <a href="#process" className="hidden text-slate hover:text-ink md:inline">
-              Process
-            </a>
-            <a href="#pricing" className="hidden text-slate hover:text-ink md:inline">
-              Pricing
-            </a>
-            <a href="#contact" className="rounded-full bg-ink px-4 py-2 font-medium text-white hover:bg-navy">
-              Book a fit call
-            </a>
-          </nav>
-        </div>
-      </StickyHeader>
+      <SiteHeader home />
 
       <main>
         {/* Hero */}
@@ -256,6 +246,43 @@ export default function Home() {
           </div>
         </section>
 
+        {/* FAQ */}
+        <section id="faq" aria-labelledby="faq-title" className="scroll-mt-16 border-t border-line bg-white">
+          <div className={`${wrap} grid gap-12 py-24 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16 lg:py-28`}>
+            <Reveal>
+              <h2 id="faq-title" className={h2}>
+                Common questions
+              </h2>
+              <p className="mt-4 max-w-[28rem] text-[1.1rem] leading-relaxed text-slate">
+                Straight answers to what owners ask before a fit call.
+              </p>
+            </Reveal>
+            <div className="divide-y divide-line border-y border-line">
+              {FAQ.map(([q, a]) => (
+                <details key={q} className="group py-5">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-[1.08rem] font-medium [&::-webkit-details-marker]:hidden">
+                    <h3>{q}</h3>
+                    <span className="mt-1 text-slate transition-transform group-open:rotate-45" aria-hidden>
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 leading-relaxed text-ink/80">{a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+              }).replace(/</g, "\\u003c"),
+            }}
+          />
+        </section>
+
         {/* Contact */}
         <section id="contact" aria-labelledby="contact-title" className="scroll-mt-16 border-t border-line bg-white">
           <div className={`${wrap} grid gap-12 py-24 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16 lg:py-28`}>
@@ -297,17 +324,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-line bg-mist">
-        <div className={`${wrap} flex flex-col gap-4 pb-28 pt-10 text-[0.9rem] text-slate sm:flex-row sm:items-center sm:justify-between sm:pb-10`}>
-          <div className="flex items-center gap-2.5">
-            <Mark className="h-6 w-6" />
-            <span>
-              {site.legalName}, {site.city}
-            </span>
-          </div>
-          <EmailLink user={site.emailUser} className="hover:text-ink" />
-        </div>
-      </footer>
+      <SiteFooter />
 
       <MessageDock channels={channels()} emailUser={site.emailUser} />
     </div>
