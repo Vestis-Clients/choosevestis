@@ -12,7 +12,8 @@ export const site = {
   name: "Vestis Solutions",
   legalName: "Vestis Solutions LLC",
   domain: "choosevestis.com",
-  url: "https://choosevestis.com",
+  // The live site is served on www (the bare domain redirects there), so canonical URLs, the sitemap and schema use www.
+  url: "https://www.choosevestis.com",
   city: "Charlotte, NC",
   owner: "Alex",
   // Mailbox name only; the "@choosevestis.com" is joined client-side.
